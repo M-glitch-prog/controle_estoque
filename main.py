@@ -28,7 +28,6 @@ def cadastrar_prod():
     print("Produto cadastrado com sucesso!")
     cursor.close()
     conexao.close()
-cadastrar_prod()
 
 def listar_prod():
     print("==Listagem de produtos==")
@@ -40,11 +39,11 @@ def listar_prod():
         print("Nenum produto cadastrado!")
     else:
         for p in produtos:
-            print("ID: ",produtos[0],
-                  "Nome: ",produtos[1],
-                  "Descrição: ",produtos[2],
-                  "Preço: ",produtos[3],
-                  "Quantidade: ",produtos[4])
+            print("ID: ",p[0],
+                  "Nome: ",p[1],
+                  "Descrição: ",p[2],
+                  "Preço: ",p[3],
+                  "Quantidade: ",p[4])
     cursor.close()
     conexao.close()
 def pesquisa_prod():
