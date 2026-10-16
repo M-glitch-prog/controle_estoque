@@ -65,13 +65,29 @@ def pesquisa_prod():
                   "Quantidade: ",p[4])
     cursor.close()
     conexao.close()
+def excluir_prod():
+    print("==Excluir produtos==")
+    id_prod=int(input("Digite o ID do produto que deseja excluir: "))
+    conexao=conectar()
+    cursor=conexao.cursor()
+    sql="DELETE FROM produtos WHERE id=%s"
+    cursor.execute(sql,(id_prod))
+    conexao.commit()
+    if cursor.rowcount>0:
+        print("Produto excluído com sucesso!")
+    else:
+        print("Produto não encontrado!")
+    cursor.close()
+    conexao.close()
+
 def menu():
     while True:
         print("==Menu de opções==")
         print("1 - Cadastrar produto")
         print("2 - Listar produtos")
         print("3 - Pesquisar produto")
-        print("4 - Sair")
+        print("4 - Excluir produto")
+        print("5 - Sair")
         opcao=input("Escolha uma opção: ")
         if opcao=="1":
             cadastrar_prod()
@@ -80,7 +96,10 @@ def menu():
         elif opcao=="3":
             pesquisa_prod()
         elif opcao=="4":
+            excluir_prod()
+        elif opcao=="5":
             break
         else:
             print("Opção inválida!")
 menu()
+ 
